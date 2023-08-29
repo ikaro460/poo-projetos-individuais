@@ -19,6 +19,8 @@ public class Exercicio4 {
 		tempC = sc.nextDouble();
 		limpa();
 		
+		// fecha scanner
+		sc.close();
 		
 		tempF = tempC * 1.8 + 32;
 		
