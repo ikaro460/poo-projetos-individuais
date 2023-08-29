@@ -13,19 +13,15 @@ public class Exercicio1 {
 		// instancia o scanner
 		Scanner sc = new Scanner(System.in);
 
-		// funcao escreva no portugol
+		// pergunta nome
 		System.out.println("Qual o seu nome?");
-
-		// leia nome
 		nome = sc.nextLine();
 
 		// limpa tela
 		limpa();
 
-		// pergunta o sobrenome
+		// pergunta sobrenome
 		System.out.println("E sobrenome?");
-
-		// leia sobrenome
 		sobrenome = sc.nextLine();
 
 		// fecha o scanner
