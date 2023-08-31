@@ -1,15 +1,39 @@
 package br.com.poo.balanco;
 
-public class BalancoTrimestralInt {
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-	private Integer jan = 15000;
-	private Integer fev = 23000;
-	private Integer mar = 17000;
+public class BalancoTrimestralInt {
 	
-	private Integer gastosInt = jan + fev + mar;
+	private static final Logger logger = Logger.getLogger(BalancoTrimestralInt.class.getName());
+
+	private int jan = 15000;
+	private int fev = 23000;
+	private int mar = 17000;
+	
+	private int somaTotal = jan + fev + mar;
 	
 	public int soma() {
-		System.out.printf("GastosInt: %d", gastosInt);
-		return gastosInt;
+		logger.log(Level.INFO, "O balanço trimestral é de R$: " + somaTotal);
+		return somaTotal;
 	}
+	
+	public int soma(int janeiro) {
+		somaTotal = janeiro;
+		logger.log(Level.INFO, "O balanço trimestral é de R$: " + somaTotal);
+		return somaTotal;
+	}
+	
+	public int soma(int janeiro, int fevereiro) {
+		somaTotal = janeiro + fevereiro;
+		logger.log(Level.INFO, "O balanço trimestral é de R$: " + somaTotal);
+		return somaTotal;
+	}
+	
+	public int soma(int janeiro, int fevereiro, int marco) {
+		somaTotal = janeiro + fevereiro + marco;
+		logger.log(Level.INFO, "O balanço trimestral é de R$: " + somaTotal);
+		return somaTotal;
+	}
+	
 }
