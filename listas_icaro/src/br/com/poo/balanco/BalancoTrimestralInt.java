@@ -14,7 +14,9 @@ public class BalancoTrimestralInt {
 	private Integer somaTotal = jan + fev + mar;
 	
 	public int soma() {
-		logger.log(Level.INFO, "O balanço trimestral é de R$: " + somaTotal);
+		if (logger.isLoggable(Level.INFO)) {		
+			logger.log(Level.INFO, String.format("O balanço trimestral é de R$: %d", somaTotal));
+		}
 		return somaTotal;
 	}
 	
