@@ -9,8 +9,9 @@ public class Conta {
 	String titular;
 	double saldo;
 
-	private static Logger logger = Logger.getLogger(SistemaInterno.class.getName());
-	
+	private static Logger logger = Logger.getLogger(Conta.class.getName());
+
+	// construtores
 	public Conta() {
 	}
 
@@ -19,12 +20,19 @@ public class Conta {
 		this.titular = titular;
 		this.saldo = saldo;
 	}
-	
+
+	// getter
+	public double getSaldo() {
+		return saldo;
+	}
+
 	@Override
 	public String toString() {
 		return "Número da conta: " + numero + "\nTitular: " + titular + "\nSaldo: " + saldo;
 	}
-	
+
+
+	// metodos sacar, depositar e transferir
 	public boolean sacar(double valor) {
 		if (this.saldo < valor) {
 			logger.log(Level.WARNING, () -> "Saldo insuficiente!");
@@ -35,7 +43,7 @@ public class Conta {
 			return true;
 		}
 	}
-	
+
 	public boolean depositar(double valor) {
 		if (valor < 0) {
 			logger.log(Level.INFO, () -> "Valor inválido!");
