@@ -5,9 +5,9 @@ import java.util.logging.Logger;
 
 public class Conta {
 
-	int numero;
-	String titular;
-	double saldo;
+	private int numero;
+	private String titular;
+	private double saldo;
 
 	private static Logger logger = Logger.getLogger(Conta.class.getName());
 
