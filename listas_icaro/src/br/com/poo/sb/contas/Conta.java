@@ -1,6 +1,15 @@
-package br.com.poo.contabancaria;
+package br.com.poo.sb.contas;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import br.com.poo.balanco.Util;
+import br.com.poo.sb.OperacaoInvalidaException;
+import br.com.poo.sb.SaldoInsuficienteException;
 
 public class Conta {
+	
+	static Logger logger = Util.setupLogger();
 
 	private int numero;
 	private String titular;
@@ -8,6 +17,7 @@ public class Conta {
 
 	// construtores
 	public Conta() {
+		logger.log(Level.INFO, "Objeto criado");
 	}
 
 	public Conta(int numero, String titular, double saldo) {

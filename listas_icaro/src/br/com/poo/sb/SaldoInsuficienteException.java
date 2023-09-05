@@ -1,4 +1,4 @@
-package br.com.poo.contabancaria;
+package br.com.poo.sb;
 
 public class SaldoInsuficienteException extends Exception {
     /**

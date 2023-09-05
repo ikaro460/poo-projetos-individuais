@@ -1,9 +1,10 @@
-package br.com.poo.contabancaria;
+package br.com.poo.sb;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.com.poo.balanco.Util;
+import br.com.poo.sb.contas.Conta;
 
 public class SistemaInterno {
 
