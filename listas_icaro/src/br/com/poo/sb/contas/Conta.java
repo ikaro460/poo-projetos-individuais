@@ -3,9 +3,9 @@ package br.com.poo.sb.contas;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.com.poo.balanco.Util;
 import br.com.poo.sb.OperacaoInvalidaException;
 import br.com.poo.sb.SaldoInsuficienteException;
+import br.com.poo.util.Util;
 
 public class Conta {
 	
@@ -40,7 +40,7 @@ public class Conta {
 	public void sacar(double valor) throws SaldoInsuficienteException, OperacaoInvalidaException {
 		if (valor <= 0) {
 			throw new OperacaoInvalidaException("Valor inválido");
-		}else if(this.saldo >= valor) {
+		}else if((this.saldo + 500) >= valor) {
 			this.saldo -= valor;
 		} else {
 			throw new SaldoInsuficienteException(saldo);

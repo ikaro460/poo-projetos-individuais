@@ -3,14 +3,16 @@ package br.com.poo.sb;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.com.poo.balanco.Util;
 import br.com.poo.sb.contas.Conta;
+import br.com.poo.sb.contas.ContaCorrente;
+import br.com.poo.util.Util;
 
 public class SistemaInterno {
+	
+	static final Logger logger = Util.setupLogger();
 
-	static Logger logger = Util.setupLogger();
-
-	public static void operacoesBancarias(int op, double valor, Conta remetente, Conta destino) {
+	public static void operacoesBancarias(int op, double valor, Conta remetente, Conta destino) {	
+		
 		try {
 			switch (op) {
 			case 1:
@@ -37,10 +39,14 @@ public class SistemaInterno {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SaldoInsuficienteException, OperacaoInvalidaException {
 
+		// Chama customizer
+		Util.customizer();
+		
 		// instancia minhaConta
 		Conta minhaConta = new Conta(123, "Pedro", 1000);
+		ContaCorrente minhaContaCorrente = new ContaCorrente(123, "Pedro", 0, 0.10);
 
 		// instancia contaDestino
 		Conta contaDestino = new Conta(321, "Destino da Silva", 5000);
@@ -48,19 +54,31 @@ public class SistemaInterno {
 		// imprime as duas contas na tela
 		logger.log(Level.INFO, () -> "Minha conta\n" + minhaConta);
 		logger.log(Level.INFO, () -> "Conta destino\n" + contaDestino);
-
-		operacoesBancarias(1, 2, minhaConta, null); // saque sucesso
-		operacoesBancarias(1, 2000, minhaConta, null); // saque saldo insuficiente
-		operacoesBancarias(1, -5, minhaConta, null); // saque valor invalido
+		logger.log(Level.INFO, () -> "Conta Corrente\n" + minhaContaCorrente);
 		
-		operacoesBancarias(2, 2, minhaConta, null); // deposito sucesso
-		operacoesBancarias(2, -9, minhaConta, null); // deposito erro
+		// aplicar juros cheque especial
+		minhaContaCorrente.sacar(100);
+		minhaContaCorrente.aplicarJurosCE(minhaContaCorrente.getSaldo(), minhaContaCorrente.getChequeEspecial());
+		minhaContaCorrente.aplicarJurosCE(minhaContaCorrente.getSaldo(), minhaContaCorrente.getChequeEspecial());
+		minhaContaCorrente.aplicarJurosCE(minhaContaCorrente.getSaldo(), minhaContaCorrente.getChequeEspecial());
 		
-		operacoesBancarias(3, 500, minhaConta, contaDestino); // transf sucesso
-		operacoesBancarias(3, 1000, minhaConta, contaDestino); // transf erro - saldo insuficiente
-		operacoesBancarias(3, 200, minhaConta, null); // transf erro - conta destino inexistente
-		operacoesBancarias(3, 200, null, contaDestino); // transf erro - conta remetente inexistente
-		operacoesBancarias(3, 200, contaDestino, minhaConta ); // transf sucesso - destino > minha conta
+		logger.log(Level.INFO, () -> "Conta Corrente\n" + minhaContaCorrente);
+		
+		
+		
+//
+//		operacoesBancarias(1, 2, minhaConta, null); // saque sucesso
+//		operacoesBancarias(1, 2000, minhaConta, null); // saque saldo insuficiente
+//		operacoesBancarias(1, -5, minhaConta, null); // saque valor invalido
+//		
+//		operacoesBancarias(2, 2, minhaConta, null); // deposito sucesso
+//		operacoesBancarias(2, -9, minhaConta, null); // deposito erro
+//		
+//		operacoesBancarias(3, 500, minhaConta, contaDestino); // transf sucesso
+//		operacoesBancarias(3, 1000, minhaConta, contaDestino); // transf erro - saldo insuficiente
+//		operacoesBancarias(3, 200, minhaConta, null); // transf erro - conta destino inexistente
+//		operacoesBancarias(3, 200, null, contaDestino); // transf erro - conta remetente inexistente
+//		operacoesBancarias(3, 200, contaDestino, minhaConta ); // transf sucesso - destino > minha conta
 
 	}
 
