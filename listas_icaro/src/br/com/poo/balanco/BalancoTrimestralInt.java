@@ -3,6 +3,8 @@ import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.com.poo.util.Util;
+
 
 
 public class BalancoTrimestralInt {
