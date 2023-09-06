@@ -3,7 +3,7 @@ package br.com.poo.sos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.com.poo.balanco.Util;
+import br.com.poo.util.Util;
 
 public class Denuncia {
 	
