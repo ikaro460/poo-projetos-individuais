@@ -1,4 +1,4 @@
-package br.com.poo.balanco;
+package br.com.poo.util;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
@@ -19,6 +19,9 @@ public class Util {
 
 	// Configura e retorna um Logger personalizado
 	public static Logger setupLogger() {
+		// Chama o customizer
+		Util.customizer();
+		
 		// Desativa o uso dos Handlers do Logger pai (se houver algum)
 		logger.setUseParentHandlers(false);
 
