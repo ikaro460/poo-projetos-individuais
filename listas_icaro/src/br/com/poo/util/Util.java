@@ -19,7 +19,7 @@ public class Util {
 
 	// Configura e retorna um Logger personalizado
 	public static Logger setupLogger() {
-		// Chama o customizer
+		// Chama customizer
 		Util.customizer();
 		
 		// Desativa o uso dos Handlers do Logger pai (se houver algum)
