@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import br.com.poo.sb.contas.Conta;
 import br.com.poo.sb.contas.ContaCorrente;
+import br.com.poo.sb.contas.ContaCorrenteEspecial;
 import br.com.poo.util.Util;
 
 public class SistemaInterno {
@@ -40,13 +41,14 @@ public class SistemaInterno {
 	}
 
 	public static void main(String[] args) throws SaldoInsuficienteException, OperacaoInvalidaException {
-
-		// Chama customizer
+		
+		//Chama customizer
 		Util.customizer();
 		
 		// instancia minhaConta
 		Conta minhaConta = new Conta(123, "Pedro", 1000);
-		ContaCorrente minhaContaCorrente = new ContaCorrente(123, "Pedro", 0, 0.10);
+		ContaCorrente minhaContaCorrente = new ContaCorrente(123, "Pedro", 0, 100);
+		ContaCorrenteEspecial minhaContaCorrenteEspecial = new ContaCorrenteEspecial(123, "Especial", 1000, 100, 500, 500);
 
 		// instancia contaDestino
 		Conta contaDestino = new Conta(321, "Destino da Silva", 5000);
@@ -55,14 +57,19 @@ public class SistemaInterno {
 		logger.log(Level.INFO, () -> "Minha conta\n" + minhaConta);
 		logger.log(Level.INFO, () -> "Conta destino\n" + contaDestino);
 		logger.log(Level.INFO, () -> "Conta Corrente\n" + minhaContaCorrente);
+		logger.log(Level.INFO, () -> "Conta Corrente Especial\n" + minhaContaCorrenteEspecial);
 		
 		// aplicar juros cheque especial
-		minhaContaCorrente.sacar(100);
-		minhaContaCorrente.aplicarJurosCE(minhaContaCorrente.getSaldo(), minhaContaCorrente.getChequeEspecial());
-		minhaContaCorrente.aplicarJurosCE(minhaContaCorrente.getSaldo(), minhaContaCorrente.getChequeEspecial());
-		minhaContaCorrente.aplicarJurosCE(minhaContaCorrente.getSaldo(), minhaContaCorrente.getChequeEspecial());
+//		minhaContaCorrente.sacar(50);
+//		logger.log(Level.INFO, () -> "Conta Corrente\n" + minhaContaCorrente);
+//		minhaContaCorrente.sacarChequeEspecial(50);
+//		minhaContaCorrente.aplicarJurosCE(0.10);
+//		logger.log(Level.INFO, () -> "Conta Corrente\n" + minhaContaCorrente);
+//		minhaContaCorrente.aplicarJurosCE(0.10);
+//		logger.log(Level.INFO, () -> "Conta Corrente\n" + minhaContaCorrente);
+//		minhaContaCorrente.aplicarJurosCE(0.10);
+//		logger.log(Level.INFO, () -> "Conta Corrente\n" + minhaContaCorrente);
 		
-		logger.log(Level.INFO, () -> "Conta Corrente\n" + minhaContaCorrente);
 		
 		
 		

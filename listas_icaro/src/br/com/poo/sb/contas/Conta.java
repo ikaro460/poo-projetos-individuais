@@ -9,7 +9,7 @@ import br.com.poo.util.Util;
 
 public class Conta {
 	
-	static Logger logger = Util.setupLogger();
+	Logger logger = Util.setupLogger();
 
 	private int numero;
 	private String titular;
@@ -24,11 +24,17 @@ public class Conta {
 		this.numero = numero;
 		this.titular = titular;
 		this.saldo = saldo;
+		Util.customizer();
 	}
 
 	// getter
 	public double getSaldo() {
 		return saldo;
+	}
+	
+	// setSaldo
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
 	}
 
 	@Override
@@ -40,7 +46,7 @@ public class Conta {
 	public void sacar(double valor) throws SaldoInsuficienteException, OperacaoInvalidaException {
 		if (valor <= 0) {
 			throw new OperacaoInvalidaException("Valor inválido");
-		}else if((this.saldo + 500) >= valor) {
+		}else if(this.saldo >= valor) {
 			this.saldo -= valor;
 		} else {
 			throw new SaldoInsuficienteException(saldo);
